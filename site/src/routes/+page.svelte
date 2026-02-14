@@ -10,6 +10,8 @@
 	<meta name="description" content="하나님 나라의 망대 - 세계선교교회" />
 </svelte:head>
 
+<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[60] focus:bg-slate-900 focus:text-white focus:px-4 focus:py-2 focus:rounded-lg">본문으로 바로가기</a>
+
 <div class="min-h-screen bg-gradient-radial from-slate-950 to-slate-900 text-white overflow-x-hidden">
 	<!-- Navbar -->
 	<nav class="fixed top-0 w-full z-50 backdrop-blur-md bg-slate-950/80 border-b border-white/5">
@@ -23,9 +25,12 @@
 				<h1 class="text-lg font-bold">세계선교교회</h1>
 			</div>
 			<button 
+				type="button"
 				class="p-2 hover:bg-white/10 rounded-lg transition-colors"
 				on:click={() => mobileMenuOpen = !mobileMenuOpen}
 				aria-label="메뉴 열기"
+				aria-expanded={mobileMenuOpen}
+				aria-controls="mobile-navigation"
 			>
 				<Menu class="w-6 h-6" />
 			</button>
@@ -33,7 +38,7 @@
 	</nav>
 
 	<!-- Main Content -->
-	<main class="pt-20 pb-16">
+	<main id="main-content" class="pt-20 pb-16">
 		<!-- Hero Section -->
 		<section class="px-6 py-16 text-center">
 			<div class="max-w-2xl mx-auto space-y-8" in:fade={{ duration: 600 }}>
@@ -63,6 +68,7 @@
 				</div>
 
 				<!-- Action Buttons -->
+				<div id="mobile-navigation" class="sr-only" aria-hidden="true"></div>
 				<div 
 					class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6"
 					in:fly={{ y: 30, duration: 800, delay: 600 }}
