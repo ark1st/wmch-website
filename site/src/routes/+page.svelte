@@ -16,7 +16,7 @@
 		<div class="container mx-auto px-6 py-4 flex justify-between items-center">
 			<div class="flex items-center space-x-3">
 				<img 
-					src="https://raw.githubusercontent.com/ark1st/wmch-website/refs/heads/main/static/wmch-logo.png" 
+					src="/wmch-logo.png" 
 					alt="세계선교교회 로고" 
 					class="h-10 w-auto"
 				/>
@@ -116,7 +116,7 @@
 					<!-- Church Logo Image -->
 					<div class="aspect-video bg-gradient-to-br from-white/5 to-white/2 flex items-center justify-center border-b border-white/10 py-12">
 						<img 
-							src="https://raw.githubusercontent.com/ark1st/wmch-website/refs/heads/main/static/wmch-logo.png" 
+							src="/wmch-logo.png" 
 							alt="세계선교교회 로고" 
 							class="max-h-64 w-auto"
 						/>
@@ -230,7 +230,7 @@
 								class="w-full h-full"
 								src="https://www.youtube.com/embed?listType=user_uploads&list=wmch1979" 
 								frameborder="0" 
-								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" sandbox="allow-scripts allow-same-origin allow-presentation" 
 								allowfullscreen={true}
 								title="세계선교교회 설교 영상"
 							></iframe>
@@ -704,7 +704,7 @@
 					<iframe 
 						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3168.123!2d126.9537!3d37.3894!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z6rK96riw64-EIOyViOyWkeyLnCDrj5nslYjqtawg6rSA7JaRMeuPmSAxNDQzLTk!5e0!3m2!1sko!2skr!4v1738332000000!5m2!1sko!2skr" 
 						class="w-full h-full"
-						style="border:0;" 
+						style="border:0;" referrerpolicy="no-referrer-when-downgrade" sandbox="allow-scripts allow-same-origin allow-popups allow-forms" 
 						allowfullscreen={true}
 						loading="lazy"
 						title="세계선교교회 위치"
@@ -762,7 +762,7 @@
 		<div class="max-w-2xl mx-auto">
 			<div class="flex items-center justify-center space-x-3 mb-4">
 				<img 
-					src="https://raw.githubusercontent.com/ark1st/wmch-website/refs/heads/main/static/wmch-logo.png" 
+					src="/wmch-logo.png" 
 					alt="세계선교교회 로고" 
 					class="h-10 w-auto"
 				/>
