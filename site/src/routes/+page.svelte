@@ -8,6 +8,10 @@
 <svelte:head>
 	<title>세계선교교회 | 하나님 나라의 망대</title>
 	<meta name="description" content="하나님 나라의 망대 - 세계선교교회" />
+	<link rel="preconnect" href="https://www.youtube.com" />
+	<link rel="preconnect" href="https://www.google.com" />
+	<link rel="dns-prefetch" href="https://www.youtube.com" />
+	<link rel="dns-prefetch" href="https://www.google.com" />
 </svelte:head>
 
 <div class="min-h-screen bg-gradient-radial from-slate-950 to-slate-900 text-white overflow-x-hidden">
@@ -232,6 +236,7 @@
 								frameborder="0" 
 								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
 								allowfullscreen={true}
+								loading="lazy"
 								title="세계선교교회 설교 영상"
 							></iframe>
 						</div>
@@ -764,6 +769,8 @@
 				<img 
 					src="https://raw.githubusercontent.com/ark1st/wmch-website/refs/heads/main/static/wmch-logo.png" 
 					alt="세계선교교회 로고" 
+					loading="lazy"
+					decoding="async"
 					class="h-10 w-auto"
 				/>
 				<span class="font-bold">세계선교교회</span>
