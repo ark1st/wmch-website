@@ -7,5 +7,7 @@
 Local:
 - cd site
 - npm ci
-- npm run check
-- npm run build
+- npm run verify
+
+CI:
+- `.github/workflows/site-verify.yml` runs `npm ci` and `npm run verify` on pull requests and pushes to `main` and `chore/site-verify`.
