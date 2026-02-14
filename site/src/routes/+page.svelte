@@ -226,14 +226,14 @@
 					<!-- Video -->
 					<div class="relative rounded-3xl overflow-hidden shadow-2xl backdrop-blur-xl bg-slate-900/50 border border-white/10">
 						<div class="aspect-video">
-							<iframe 
-								class="w-full h-full"
-								src="https://www.youtube.com/embed?listType=user_uploads&list=wmch1979" 
-								frameborder="0" 
-								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-								allowfullscreen
-								title="세계선교교회 설교 영상"
-							></iframe>
+								<iframe 
+									class="w-full h-full"
+									src="https://www.youtube.com/embed?listType=user_uploads&list=wmch1979" 
+									frameborder="0" 
+									allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+									allowFullScreen
+									title="세계선교교회 설교 영상"
+								></iframe>
 						</div>
 					</div>
 				</div>
@@ -701,14 +701,14 @@
 			<div class="grid md:grid-cols-2 gap-8">
 				<!-- Map -->
 				<div class="rounded-3xl overflow-hidden shadow-2xl backdrop-blur-xl bg-slate-900/50 border border-white/10 h-[400px]">
-					<iframe 
-						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3168.123!2d126.9537!3d37.3894!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z6rK96riw64-EIOyViOyWkeyLnCDrj5nslYjqtawg6rSA7JaRMeuPmSAxNDQzLTk!5e0!3m2!1sko!2skr!4v1738332000000!5m2!1sko!2skr" 
-						class="w-full h-full"
-						style="border:0;" 
-						allowfullscreen="" 
-						loading="lazy"
-						title="세계선교교회 위치"
-					></iframe>
+						<iframe 
+							src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3168.123!2d126.9537!3d37.3894!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z6rK96riw64-EIOyViOyWkeyLnCDrj5nslYjqtawg6rSA7JaRMeuPmSAxNDQzLTk!5e0!3m2!1sko!2skr!4v1738332000000!5m2!1sko!2skr" 
+							class="w-full h-full"
+							style="border:0;" 
+							allowFullScreen
+							loading="lazy"
+							title="세계선교교회 위치"
+						></iframe>
 				</div>
 
 				<!-- Contact Info Cards -->
