@@ -1,9 +1,20 @@
 <script lang="ts">
-	import { fade } from 'svelte/transition';
+	import { fade, slide } from 'svelte/transition';
 	import { base } from '$app/paths';
-	import { Menu, Sun, BookOpen, Heart, ChevronRight, Youtube, MapPin, Phone, Mail } from 'lucide-svelte';
-	
+	import { Menu, X, Sun, BookOpen, Heart, ChevronRight, Youtube, MapPin, Phone, Mail } from 'lucide-svelte';
+
 	let mobileMenuOpen = false;
+
+	const mobileLinks = [
+		{ href: '#church-intro', label: '교회 소개' },
+		{ href: '#youtube-section', label: '강단 말씀' },
+		{ href: '#three-courts', label: '세 가지 뜰' },
+		{ href: '#contact-section', label: '오시는 길' }
+	];
+
+	const closeMobileMenu = () => {
+		mobileMenuOpen = false;
+	};
 </script>
 
 <svelte:head>
@@ -23,7 +34,7 @@
 
 <div class="min-h-screen bg-white text-slate-900">
 	<!-- Navbar -->
-	<nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-sm border-b border-slate-200">
+	<nav class="fixed top-0 w-full z-50 bg-white/95 border-b border-slate-200">
 		<div class="container mx-auto px-6 py-4 flex justify-between items-center">
 			<div class="flex items-center space-x-3">
 				<img 
@@ -35,16 +46,45 @@
 				/>
 				<h1 class="text-lg font-semibold">세계선교교회</h1>
 			</div>
+
+			<div class="hidden md:flex items-center gap-5 text-sm text-slate-600">
+				<a href="#church-intro" class="hover:text-slate-900 transition-colors">교회 소개</a>
+				<a href="#youtube-section" class="hover:text-slate-900 transition-colors">강단 말씀</a>
+				<a href="#three-courts" class="hover:text-slate-900 transition-colors">세 가지 뜰</a>
+				<a href="#contact-section" class="hover:text-slate-900 transition-colors">오시는 길</a>
+			</div>
+
 			<button 
 				type="button"
-				class="p-2 hover:bg-slate-100 transition-colors"
+				class="md:hidden p-2 hover:bg-slate-100 transition-colors"
 				on:click={() => mobileMenuOpen = !mobileMenuOpen}
 				aria-label={mobileMenuOpen ? '메뉴 닫기' : '메뉴 열기'}
 				aria-expanded={mobileMenuOpen}
+				aria-controls="mobile-menu-panel"
 			>
-				<Menu class="w-6 h-6" />
+				{#if mobileMenuOpen}
+					<X class="w-6 h-6" />
+				{:else}
+					<Menu class="w-6 h-6" />
+				{/if}
 			</button>
 		</div>
+
+		{#if mobileMenuOpen}
+			<div id="mobile-menu-panel" class="md:hidden border-t border-slate-200 bg-white" transition:slide={{ duration: 200 }}>
+				<div class="container mx-auto px-6 py-4 flex flex-col gap-1">
+					{#each mobileLinks as link}
+						<a
+							href={link.href}
+							class="block py-3 px-2 text-sm font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50 transition-colors"
+							on:click={closeMobileMenu}
+						>
+							{link.label}
+						</a>
+					{/each}
+				</div>
+			</div>
+		{/if}
 	</nav>
 
 	<!-- Main Content -->
@@ -52,9 +92,17 @@
 		<!-- Hero Section -->
 		<section class="px-6 py-24 text-center border-b border-slate-100">
 			<div class="max-w-3xl mx-auto space-y-10" in:fade={{ duration: 400 }}>
-				<!-- Badge -->
-				<div class="inline-flex items-center space-x-2 border border-slate-300 px-3 py-1.5 text-xs font-medium text-slate-700">
-					<span>2026</span>
+				<!-- Hero Image -->
+				<div class="overflow-hidden border border-slate-200 bg-slate-50">
+					<img
+						src={`${base}/hero-church.jpg`}
+						alt="예배 현장 이미지"
+						width="1600"
+						height="900"
+						loading="eager"
+						decoding="async"
+						class="w-full h-auto object-cover"
+					/>
 				</div>
 
 				<!-- Main Title -->
@@ -94,7 +142,7 @@
 		</section>
 
 		<!-- Church Introduction Section -->
-		<section class="px-6 py-20">
+		<section id="church-intro" class="px-6 py-20">
 			<div class="max-w-4xl mx-auto">
 				<!-- Section Header -->
 				<div class="text-center mb-16 space-y-4">
@@ -248,7 +296,7 @@
 		</section>
 
 		<!-- Three Courts Section (세 가지 뜰) -->
-		<section class="px-6 py-20">
+		<section id="three-courts" class="px-6 py-20">
 			<div class="max-w-6xl mx-auto">
 				<!-- Section Title -->
 				<div class="text-center mb-16 space-y-3">
@@ -560,7 +608,7 @@
 		</section>
 
 		<!-- Contact Section -->
-		<section class="px-6 py-20">
+		<section id="contact-section" class="px-6 py-20">
 			<div class="max-w-6xl mx-auto">
 				<div class="text-center mb-12 space-y-3">
 					<p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">오시는 길</p>
