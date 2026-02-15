@@ -8,7 +8,11 @@
 
 <svelte:head>
 	<title>세계선교교회 | 하나님 나라의 망대</title>
-	<meta name="description" content="하나님 나라의 망대 - 세계선교교회" />
+	<meta name="description" content="하나님 나라의 망대 - 세계선교교회. 오직 그리스도로 하나된 복음공동체." />
+	<meta property="og:title" content="세계선교교회 | 하나님 나라의 망대" />
+	<meta property="og:description" content="오직 그리스도로 하나된 복음공동체 - 세계선교교회" />
+	<meta property="og:type" content="website" />
+	<meta property="og:locale" content="ko_KR" />
 	<link rel="preconnect" href="https://www.youtube.com" />
 	<link rel="preconnect" href="https://www.google.com" />
 	<link rel="dns-prefetch" href="https://www.youtube.com" />
