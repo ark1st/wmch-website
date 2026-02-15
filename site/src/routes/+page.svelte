@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition';
+	import { base } from '$app/paths';
 	import { Menu, Sun, BookOpen, Heart, ChevronRight, Youtube, MapPin, Phone, Mail } from 'lucide-svelte';
 	
 	let mobileMenuOpen = false;
@@ -22,7 +23,7 @@
 		<div class="container mx-auto px-6 py-4 flex justify-between items-center">
 			<div class="flex items-center space-x-3">
 				<img 
-					src="/wmch-logo.png" 
+					src={`${base}/wmch-logo.png`} 
 					alt="세계선교교회 로고" 
 					class="h-10 w-auto"
 				/>
@@ -102,7 +103,7 @@
 				<div class="border border-slate-200 mb-16">
 					<div class="aspect-video bg-slate-50 flex items-center justify-center py-12 border-b border-slate-200">
 						<img 
-							src="/wmch-logo.png" 
+							src={`${base}/wmch-logo.png`} 
 							alt="세계선교교회 로고" 
 							class="max-h-64 w-auto"
 						/>
@@ -614,7 +615,7 @@
 		<div class="max-w-2xl mx-auto">
 			<div class="flex items-center justify-center space-x-3 mb-4">
 				<img 
-					src="/wmch-logo.png" 
+					src={`${base}/wmch-logo.png`} 
 					alt="세계선교교회 로고" 
 					loading="lazy"
 					decoding="async"
