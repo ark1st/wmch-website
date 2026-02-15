@@ -37,9 +37,8 @@
 				type="button"
 				class="p-2 hover:bg-slate-100 transition-colors"
 				on:click={() => mobileMenuOpen = !mobileMenuOpen}
-				aria-label="메뉴 열기"
+				aria-label={mobileMenuOpen ? '메뉴 닫기' : '메뉴 열기'}
 				aria-expanded={mobileMenuOpen}
-				aria-controls="mobile-navigation"
 			>
 				<Menu class="w-6 h-6" />
 			</button>
@@ -71,16 +70,23 @@
 				</div>
 
 				<!-- Action Buttons -->
-				<div id="mobile-navigation" class="sr-only" aria-hidden="true"></div>
 				<div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-4">
-					<button class="w-full sm:w-auto px-6 py-3 bg-slate-900 text-white text-sm font-medium hover:bg-slate-800 transition-colors flex items-center justify-center">
+					<a
+						href="#youtube-section"
+						class="w-full sm:w-auto px-6 py-3 bg-slate-900 text-white text-sm font-medium hover:bg-slate-800 transition-colors flex items-center justify-center"
+					>
 						메시지 보기
 						<ChevronRight class="w-4 h-4 ml-1" />
-					</button>
-					<button class="w-full sm:w-auto px-6 py-3 border border-slate-300 text-slate-900 text-sm font-medium hover:bg-slate-50 transition-colors flex items-center justify-center">
+					</a>
+					<a
+						href="https://youtube.com/@wmch1979"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="w-full sm:w-auto px-6 py-3 border border-slate-300 text-slate-900 text-sm font-medium hover:bg-slate-50 transition-colors flex items-center justify-center"
+					>
 						<Youtube class="w-4 h-4 mr-2" />
 						유튜브 채널
-					</button>
+					</a>
 				</div>
 			</div>
 		</section>
@@ -189,7 +195,7 @@
 		</section>
 
 		<!-- YouTube Section (강단 말씀) -->
-		<section class="px-6 py-20 bg-slate-50">
+		<section id="youtube-section" class="px-6 py-20 bg-slate-50">
 			<div class="max-w-4xl mx-auto">
 				<!-- Section Header -->
 				<div class="text-center mb-12 space-y-3">
@@ -206,9 +212,8 @@
 				<div class="border border-slate-200 bg-white mb-8">
 					<div class="aspect-video">
 						<iframe 
-							class="w-full h-full"
+							class="w-full h-full border-0"
 							src="https://www.youtube.com/embed?listType=user_uploads&list=wmch1979" 
-							frameborder="0" 
 							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
 							referrerpolicy="strict-origin-when-cross-origin" 
 							sandbox="allow-scripts allow-same-origin allow-presentation" 
@@ -563,8 +568,7 @@
 					<div class="border border-slate-200 h-[400px]">
 						<iframe 
 							src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3168.123!2d126.9537!3d37.3894!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z6rK96riw64-EIOyViOyWkeyLnCDrj5nslYjqtawg6rSA7JaRMeuPmSAxNDQzLTk!5e0!3m2!1sko!2skr!4v1738332000000!5m2!1sko!2skr" 
-							class="w-full h-full"
-							style="border:0;" 
+							class="w-full h-full border-0"
 							referrerpolicy="no-referrer-when-downgrade" 
 							sandbox="allow-scripts allow-same-origin allow-popups allow-forms" 
 							allowfullscreen={true}
