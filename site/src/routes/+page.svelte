@@ -23,12 +23,14 @@
 
 <div class="min-h-screen bg-white text-slate-900">
 	<!-- Navbar -->
-	<nav class="fixed top-0 w-full z-50 bg-white/95 border-b border-slate-200">
+	<nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-sm border-b border-slate-200">
 		<div class="container mx-auto px-6 py-4 flex justify-between items-center">
 			<div class="flex items-center space-x-3">
 				<img 
 					src={`${base}/wmch-logo.png`} 
 					alt="세계선교교회 로고" 
+					width="40"
+					height="40"
 					class="h-10 w-auto"
 				/>
 				<h1 class="text-lg font-semibold">세계선교교회</h1>
@@ -115,6 +117,10 @@
 						<img 
 							src={`${base}/wmch-logo.png`} 
 							alt="세계선교교회 로고" 
+							width="256"
+							height="256"
+							loading="lazy"
+							decoding="async"
 							class="max-h-64 w-auto"
 						/>
 					</div>
@@ -625,6 +631,8 @@
 				<img 
 					src={`${base}/wmch-logo.png`} 
 					alt="세계선교교회 로고" 
+					width="40"
+					height="40"
 					loading="lazy"
 					decoding="async"
 					class="h-10 w-auto"
