@@ -1,188 +1,62 @@
 # MORNING_REPORT.md
 
-## Final Status — 2026-02-15 16:40 KST
+## Nightly Autopilot — 2026-02-16 02:23 KST
+
+**Branch:** `opencode/nightly-autopilot` (from `main`)
+
+### Changes Made
+
+#### 1. fix: set lang='ko', add favicon and OG meta tags
+- **What:** Changed `<html lang="en">` to `<html lang="ko">`. Added `wmch-logo.png` as favicon and apple-touch-icon using base-aware `%sveltekit.assets%` paths. Added `theme-color` meta. Added Open Graph meta tags for social sharing.
+- **Why:** `lang="en"` was incorrect for a Korean site — hurts screen readers and SEO. Missing favicon showed generic browser icon. No OG tags meant poor social media previews.
+
+#### 2. fix: enable SSR for proper static HTML prerendering
+- **What:** Removed `export const ssr = false` from `+layout.js`.
+- **Why:** With `ssr: false`, prerendered pages were empty HTML shells — no content until JS loaded. This was the single highest-impact fix. Pages now have full content baked into the HTML for instant display and proper SEO on GitHub Pages.
+
+#### 3. fix: improve semantics and accessibility
+- **What:** Converted hero buttons to proper `<a>` links ("메시지 보기" anchors to `#youtube-section`, "유튜브 채널" links externally). Removed deprecated `frameborder` from iframes. Fixed orphaned `aria-controls`. Added dynamic `aria-label` on menu button.
+- **Why:** Buttons that navigate should be links. Deprecated attributes and orphaned aria references hurt a11y.
+
+#### 4. perf: enable precompression, smooth scroll, reduce CLS
+- **What:** Enabled `precompress: true` (generates `.gz`/`.br` files). Added CSS `scroll-behavior: smooth` with `prefers-reduced-motion` respect. Added `backdrop-blur-sm` to navbar. Added explicit `width`/`height` to all logo images. Added `loading="lazy"` to below-fold images.
+- **Why:** Precompression is free perf for static hosting. Image dimensions prevent layout shift. Smooth scroll improves in-page navigation.
+
+### Verification
+
+All commits passed:
+- `npm --prefix site run check` — 0 errors, 0 warnings
+- `npm --prefix site run build` — successful, static site written to `build/`
+
+### Files Changed
+
+| File | Changes |
+|------|---------|
+| `site/src/app.html` | lang="ko", favicon, apple-touch-icon, theme-color |
+| `site/src/app.css` | smooth scroll with reduced-motion respect |
+| `site/src/routes/+layout.js` | Removed `ssr: false` |
+| `site/src/routes/+page.svelte` | OG meta, semantic links, aria fixes, image attrs, navbar blur |
+| `site/svelte.config.js` | `precompress: true` |
+
+### Risk Assessment
+
+**Low risk.** No core content or layout changes. All modifications are additive (meta tags, attributes) or corrective (ssr, lang, semantics). The SSR change is the most impactful — build passes cleanly confirming no SSR-incompatible code.
+
+---
+
+## Previous Report — 2026-02-15 16:40 KST
+
+<details>
+<summary>Expand previous nightwatch report</summary>
 
 **Nightwatch period ended** (scheduled until 09:00, final patrol at 16:40).
 
-**16:40 final patrol:** No active codex sessions. All worktrees remain clean. Final nightwatch commit pushed to main.
-- `main`: synced with remote (final conclusion commit pushed)
-- `security/site-headers`: synced with remote
-- `test/site-vitest`: synced with remote
+Overnight hardening was prepared as PR-ready local branches with isolated worktrees per role.
 
-**16:10 check:** No active codex sessions. All worktrees remain clean.
-- `chore/site-verify`: diverged from remote (3 nightwatch patrol commits: 12:10, 11:50, 11:30)
+**Role branches:** tooling/dx-verify, security/frontend-checklist, test/quality-baseline, ui/a11y-pass, perf/frontend-perf
 
-**Previous checks:**
-**12:10:** No active sessions, worktrees clean, site-verify had unpushed commits.
-**11:50:** All sessions completed, all branches clean and committed.
-
-**11:50 check:** No active sessions. All worktrees remain clean and committed.
-
-All three active branches completed and committed:
-- `chore/site-verify` — clean, last commit: fix base-aware logo paths
-- `security/site-headers` — clean, last commit: document header policy
-- `test/site-vitest` — clean, last commit: add vitest suite
-
-No codex sessions running. All worktrees clean (no uncommitted changes).
-
-## Original Summary
-
-Overnight hardening was prepared as **PR-ready local branches** with isolated worktrees per role.
-All role branches passed required gates (where scripts exist):
-- `npm ci`
-- `npm run check`
-- `npm run lint` (not present)
-- `npm test` (only present on test branch)
-
-## Merge order (required)
-
-1. Tooling/DX
-2. Security
-3. Test
-4. UI/UX
-5. Performance
-
-## Role PR blocks
-
-### 1) Tooling/DX — `tooling/dx-verify`
-• What changed:
-- Standardized script formatting and added `verify:ci` in `site/package.json`
-- Added root `CONTRIBUTING.md` with minimal execution rules
-
-• Why:
-- To ensure all follow-up role PRs use consistent quality gates and workflow constraints.
-
-• How to test:
-- `cd site && npm ci && npm run check && npm run build`
-- Optional: `npm run verify:ci`
-
-• Risk:
-- Low. Script-level changes only.
-
-• Screenshots (UI 변경 시):
-- N/A
-
-### 2) Security — `security/frontend-checklist`
-• What changed:
-- Replaced remote GitHub raw logo URLs with local `/wmch-logo.png`
-- Added `referrerpolicy` and `sandbox` to YouTube/Google Maps iframes
-- Added `SECURITY.md` checklist/findings
-
-• Why:
-- Reduce third-party exposure, referrer leakage, and broadened iframe capabilities.
-
-• How to test:
-- `cd site && npm ci && npm run check && npm run build`
-- Open page and verify logo, YouTube embed, map embed still render
-
-• Risk:
-- Medium-low. Some embed behaviors can vary with stricter sandbox flags.
-
-• Screenshots (UI 변경 시):
-- Optional smoke screenshot after merge
-
-### 3) Test/Quality — `test/quality-baseline`
-• What changed:
-- Added `test:smoke` and `test` scripts in `site/package.json`
-- Added root `TESTING.md`
-
-• Why:
-- Ensure a stable `npm test` entrypoint exists for CI and local checks.
-
-• How to test:
-- `cd site && npm ci && npm run check && npm test`
-
-• Risk:
-- Low. Test script currently wraps existing `check` flow.
-
-• Screenshots (UI 변경 시):
-- N/A
-
-### 4) UI/UX+a11y — `ui/a11y-pass`
-• What changed:
-- Added skip-link to main content
-- Added explicit `type="button"` and menu aria semantics (`aria-expanded`, `aria-controls`)
-- Added `docs/ui-guidelines.md`
-
-• Why:
-- Improve keyboard navigation and semantic accessibility without visual redesign.
-
-• How to test:
-- `cd site && npm ci && npm run check && npm run build`
-- Keyboard Tab from top: confirm skip-link visibility and movement to main
-
-• Risk:
-- Low. Markup-only semantic additions.
-
-• Screenshots (UI 변경 시):
-- Recommended (skip-link focused state)
-
-### 5) Performance — `perf/frontend-perf`
-• What changed:
-- Added `preconnect` / `dns-prefetch` for embed origins
-- Added lazy loading/async decoding for non-critical images
-- Added lazy loading for YouTube iframe
-- Added root `PERF_NOTES.md`
-
-• Why:
-- Reduce initial loading pressure and improve network warmup for third-party embeds.
-
-• How to test:
-- `cd site && npm ci && npm run check && npm run build`
-- Optional: Lighthouse mobile comparison before/after
-
-• Risk:
-- Low. Potential minor behavior differences in load timing.
-
-• Screenshots (UI 변경 시):
-- Optional (no major visual change expected)
-
-## Conflicts encountered + resolutions
-
-- No git conflicts encountered during overnight isolated worktree flow.
-- Isolation strategy: one branch + one worktree per role avoided concurrent write races.
-
-## PR-ready local branches and push/open commands
-
-```bash
-# from /tmp/wmch/site-verify (or any linked worktree)
-
-# 1) Tooling/DX
-cd /tmp/wmch/worktrees/wt-tooling
-git push -u origin tooling/dx-verify
-# then open PR: tooling/dx-verify -> main
-
-# 2) Security
-cd /tmp/wmch/worktrees/wt-security
-git push -u origin security/frontend-checklist
-# PR: security/frontend-checklist -> main
-
-# 3) Test
-cd /tmp/wmch/worktrees/wt-test
-git push -u origin test/quality-baseline
-# PR: test/quality-baseline -> main
-
-# 4) UI/UX
-cd /tmp/wmch/worktrees/wt-ui
-git push -u origin ui/a11y-pass
-# PR: ui/a11y-pass -> main
-
-# 5) Performance
-cd /tmp/wmch/worktrees/wt-perf
-git push -u origin perf/frontend-perf
-# PR: perf/frontend-perf -> main
-
-# 6) Integrator docs (optional tracking PR)
-cd /tmp/wmch/worktrees/wt-integrator
-git push -u origin integrator/morning-report
-# PR: integrator/morning-report -> main
-```
-
-## Impact / risk / remaining TODOs
-
-- Impact: baseline hardening pipeline is now segmented and merge-order controlled.
-- Risk: iframe sandbox restrictions should be monitored post-merge on all browsers.
-- TODOs:
-  1. Introduce real lint script (ESLint) in a dedicated future PR.
-  2. Add automated security headers at hosting layer.
-  3. Expand tests from smoke check to component/e2e.
+**Remaining TODOs:**
+1. Introduce real lint script (ESLint) in a dedicated future PR.
+2. Add automated security headers at hosting layer.
+3. Expand tests from smoke check to component/e2e.
+</details>
