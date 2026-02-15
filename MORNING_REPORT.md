@@ -1,13 +1,16 @@
 # MORNING_REPORT.md
 
-## Final Status — 2026-02-15 16:10 KST
+## Final Status — 2026-02-15 16:40 KST
 
-**Nightwatch period ended** (scheduled until 09:00, final check at 16:10).
+**Nightwatch period ended** (scheduled until 09:00, final patrol at 16:40).
 
-**16:10 final check:** No active codex sessions. All worktrees remain clean.
-- `chore/site-verify`: diverged from remote (3 nightwatch patrol commits: 12:10, 11:50, 11:30)
+**16:40 final patrol:** No active codex sessions. All worktrees remain clean. Final nightwatch commit pushed to main.
+- `main`: synced with remote (final conclusion commit pushed)
 - `security/site-headers`: synced with remote
 - `test/site-vitest`: synced with remote
+
+**16:10 check:** No active codex sessions. All worktrees remain clean.
+- `chore/site-verify`: diverged from remote (3 nightwatch patrol commits: 12:10, 11:50, 11:30)
 
 **Previous checks:**
 **12:10:** No active sessions, worktrees clean, site-verify had unpushed commits.
