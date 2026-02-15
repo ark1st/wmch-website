@@ -1,6 +1,17 @@
 # MORNING_REPORT.md
 
-## Concise summary
+## Final Status — 2026-02-15 11:30 KST
+
+**Nightwatch concluded** (past scheduled end time 09:00).
+
+All three active branches completed and committed:
+- `chore/site-verify` — clean, last commit: fix base-aware logo paths
+- `security/site-headers` — clean, last commit: document header policy
+- `test/site-vitest` — clean, last commit: add vitest suite
+
+No codex sessions running. All worktrees clean (no uncommitted changes).
+
+## Original Summary
 
 Overnight hardening was prepared as **PR-ready local branches** with isolated worktrees per role.
 All role branches passed required gates (where scripts exist):
