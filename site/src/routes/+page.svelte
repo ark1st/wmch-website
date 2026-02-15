@@ -92,17 +92,16 @@
 		<!-- Hero Section -->
 		<section class="px-6 py-24 text-center border-b border-slate-100">
 			<div class="max-w-3xl mx-auto space-y-10" in:fade={{ duration: 400 }}>
-				<!-- Hero Image -->
-				<div class="overflow-hidden border border-slate-200 bg-slate-50">
+				<!-- Hero Brand Mark -->
+				<div class="inline-flex items-center gap-3 border border-slate-200 bg-slate-50 px-4 py-2">
 					<img
-						src={`${base}/hero-church.jpg`}
-						alt="예배 현장 이미지"
-						width="1600"
-						height="900"
-						loading="eager"
-						decoding="async"
-						class="w-full h-auto object-cover"
+						src={`${base}/wmch-logo.png`}
+						alt="세계선교교회 로고"
+						width="28"
+						height="28"
+						class="h-7 w-auto"
 					/>
+					<span class="text-sm font-medium text-slate-700">WORLD MISSION CHURCH</span>
 				</div>
 
 				<!-- Main Title -->
